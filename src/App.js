@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./App.css";
+import "./assets/styles/app.scss";
 import Header from "./components/Layout/Header";
 
 class App extends Component {
