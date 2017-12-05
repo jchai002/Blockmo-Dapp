@@ -1,3 +1,7 @@
-body {
-  font-family: "Oswald", "open-sans", "arial";
-}
+@import "~bootstrap/scss/bootstrap.scss";
+
+@import "base/vars";
+@import "base/typography";
+
+// global layout
+@import "layout";
