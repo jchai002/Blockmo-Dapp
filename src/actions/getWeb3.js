@@ -1,5 +1,5 @@
 import store from "../store";
-import WEB3_INITIALIZED from "./types";
+import { WEB3_INITIALIZED } from "./types";
 import Web3 from "web3";
 
 function web3Initialized(results) {
