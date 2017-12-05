@@ -1,36 +1,52 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getAccount } from "actions/account";
 
 class Header extends Component {
-  // componentDidUpdate() {
+  state = {
+    account: null,
+    balance: null
+  };
+  // componentDidMount() {
   //   if (this.props.web3) {
+  //     // get account
   //     this.props.web3.eth.getCoinbase((err, account) => {
-  //       console.log(account);
-  //       if (!err) {
-  //         this.props.web3.eth.getBalance(account, (err, balance) => {
-  //           if (!err) {
-  //             console.log(this.props.web3.fromWei(balance, "ether") + " ETH");
+  //       this.setState({ account });
+  //       if (account) {
+  //         // get balance
+  //         this.props.web3.eth.getBalance(account, (err, wei) => {
+  //           if (wei) {
+  //             var balance = this.props.web3.fromWei(wei, "ether") + " ETH";
+  //             this.setState({ balance });
   //           }
   //         });
-  //       } else {
-  //         console.error(err);
   //       }
   //     });
   //   }
   // }
   render() {
     return (
-      <header className="navbar">
-        <div className="pure-g">
-          <p>Blockmo</p>
+      <header>
+        <div className="nav-desktop">
+          <div className="logo">
+            <span>Blockmo</span>
+          </div>
+          <div className="account">
+            <p>
+              <span>Address:</span>
+              <span>{this.state.account}</span>
+            </p>
+          </div>
+          <div className="balance">
+            <p>
+              <span>Balance:</span>
+              <span>{this.state.balance}</span>
+            </p>
+          </div>
         </div>
       </header>
     );
   }
 }
 
-function mapStateToProps({ web3 }) {
-  return { web3: web3.web3Instance };
-}
-
-export default connect(mapStateToProps)(Header);
+export default connect(null, { getAccount })(Header);

@@ -1,10 +1,23 @@
 header {
   border-bottom: 1px solid $gray1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .nav-desktop {
+    width: 100%;
+    color: $blue;
+    height: $space-xl;
+    padding: 0 $space-lg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    > div span {
+      margin-right: $space-xs;
+    }
+  }
 }
 
 body {
   font-family: "Oswald";
+}
+
+p {
+  margin: 0;
 }

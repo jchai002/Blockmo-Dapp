@@ -1,33 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./assets/styles/app.scss";
+import { initializeWeb3 } from "actions/web3";
+import { getAccount } from "actions/account";
 import Header from "./components/Layout/Header";
 
 class App extends Component {
-  state = {
-    account: null
-  };
-  componentDidUpdate() {
-    if (this.props.web3) {
-      this.props.web3.eth.getCoinbase((err, account) => {
-        if (account) {
-          this.setState({ account });
-        }
-        if (err) {
-          console.error(err);
-        }
-      });
-    }
+  componentDidMount() {
+    this.props.initializeWeb3();
+    this.props.getAccount();
   }
 
   renderView() {
+    console.log(this.props);
     if (!this.props.web3) {
       return (
         <div className="unauthenticated">
           <p>{"No Web3 detected please download metamask"}</p>
         </div>
       );
-    } else if (!this.state.account) {
+    } else if (!this.props.account) {
       return (
         <div className="unauthenticated">
           <p>{"Please login with metamask"}</p>
@@ -46,9 +38,13 @@ class App extends Component {
     );
   }
 }
-
-function mapStateToProps({ web3 }) {
-  return { web3: web3.web3Instance };
-}
-
-export default connect(mapStateToProps)(App);
+export default connect(
+  ({ web3, account }) => ({
+    web3,
+    account
+  }),
+  {
+    initializeWeb3,
+    getAccount
+  }
+)(App);
