@@ -1,30 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import SendForm from "./SendForm";
 
 class Home extends Component {
-  // componentDidUpdate() {
-  //   if (this.props.web3) {
-  //     this.props.web3.eth.getCoinbase((err, account) => {
-  //       console.log(account);
-  //       if (!err) {
-  //         this.props.web3.eth.getBalance(account, (err, balance) => {
-  //           if (!err) {
-  //             console.log(this.props.web3.fromWei(balance, "ether") + " ETH");
-  //           }
-  //         });
-  //       } else {
-  //         console.error(err);
-  //       }
-  //     });
-  //   }
-  // }
+  onInputChange(event) {
+    this.setState({ name: event.target.value });
+  }
   render() {
     return (
       <main className="container">
-        <div className="pure-g">
-          <div className="pure-u-1-1">
-            <h1>Home</h1>
-          </div>
+        <div className="row">
+          <SendForm />
         </div>
       </main>
     );

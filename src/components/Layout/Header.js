@@ -7,7 +7,6 @@ class Header extends Component {
     this.props.getAccount();
   }
   render() {
-    console.log(this.props);
     return (
       <header>
         <div className="nav-desktop">
