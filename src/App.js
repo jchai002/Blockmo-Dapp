@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   renderView() {
-    console.log(this.props);
     if (!this.props.web3) {
       return (
         <div className="unauthenticated">
