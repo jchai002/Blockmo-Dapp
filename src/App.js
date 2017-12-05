@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
+import Header from "./components/Layout/Header";
 
 class App extends Component {
   state = {
@@ -18,22 +19,31 @@ class App extends Component {
       });
     }
   }
-  render() {
+
+  renderView() {
     if (!this.props.web3) {
       return (
-        <div>
-          <p>{"No Web3 detected"}</p>
+        <div className="unauthenticated">
+          <p>{"No Web3 detected please download metamask"}</p>
         </div>
       );
     } else if (!this.state.account) {
       return (
-        <div>
+        <div className="unauthenticated">
           <p>{"Please login with metamask"}</p>
         </div>
       );
     } else {
-      return <div className="App">{this.props.children}</div>;
+      return <div className="authenticated">{this.props.children}</div>;
     }
+  }
+  render() {
+    return (
+      <div className="app">
+        <Header />
+        {this.renderView()}
+      </div>
+    );
   }
 }
 
