@@ -1,4 +1,4 @@
-// import { GET_ACCOUNT_SUCCESSS } from "app/actions/types";
+import { PAYMENT_SUCCESSS } from "app/actions/types";
 import BlockmoJSON from "contracts/Blockmo.json";
 import store from "store";
 const contract = require("truffle-contract");
@@ -19,10 +19,18 @@ export function pay({ address, amount, note }) {
           "test note",
           {
             from: web3.eth.coinbase,
-            value: web3.toWei(14, "ether"),
+            value: web3.toWei(1, "ether"),
             gas: 500000
           }
-        );
+        )
+          .then(({ tx }) => {
+            if (tx) {
+              dispatch({ type: PAYMENT_SUCCESSS });
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
       });
     };
   }
