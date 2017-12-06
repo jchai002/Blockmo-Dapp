@@ -17,7 +17,7 @@ contract Blockmo is Killable {
   uint transactionCounter;
 
   // Events
-  event payEvent (
+  event transactionEvent (
     uint indexed _id,
     address indexed _sender,
     address indexed _receiver,
@@ -44,7 +44,7 @@ contract Blockmo is Killable {
     _receiver.transfer(msg.value);
 
     // trigger the event
-    payEvent(transactionCounter, msg.sender, _receiver, msg.value, _note);
+    transactionEvent(transactionCounter, msg.sender, _receiver, msg.value, _note);
   }
 
   // fetch the number of transactions in the contract

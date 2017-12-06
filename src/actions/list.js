@@ -16,7 +16,7 @@ export function getTransactions() {
           .getNumberOfTransactions()
           .then(bigNum => {
             var txCount = bigNum.toNumber();
-            return getOneTransaction(instance, txCount, {});
+            return getContractTransactions(instance, txCount, {});
           })
           .then(hash => {
             var arr = [];
@@ -39,8 +39,8 @@ export function getTransactions() {
 }
 
 // recursively get results in descending order by id
-async function getOneTransaction(contractInstance, total, currentHash) {
-  if (total == 0) {
+async function getContractTransactions(contractInstance, total, currentHash) {
+  if (total === 0) {
     return currentHash;
   }
   let tx = await contractInstance.transactions(total);
@@ -50,5 +50,5 @@ async function getOneTransaction(contractInstance, total, currentHash) {
   }
   currentHash[total] = tx;
   total--;
-  return getOneTransaction(contractInstance, total, currentHash);
+  return getContractTransactions(contractInstance, total, currentHash);
 }

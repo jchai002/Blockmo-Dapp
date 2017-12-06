@@ -6,9 +6,7 @@ class TransactionList extends Component {
     return this.props.list.transactions.map((tx, i) => {
       return (
         <li key={i}>
-          <p>{`${tx[1]} transferred`}</p>
-          <p>{`${tx[3]} ETH`}</p>
-          <p>{`to ${tx[2]}`}</p>
+          <p>{`${tx[1].substr(-6)} transferred ${tx[3]} ETH to ${tx[2].substr(-6)}`}</p>
           <p>{`because ${tx[4]}`}</p>
         </li>
       );
