@@ -5,6 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var ManifestPlugin = require("webpack-manifest-plugin");
 var InterpolateHtmlPlugin = require("react-dev-utils/InterpolateHtmlPlugin");
 var url = require("url");
+var path = require("path");
 var paths = require("./paths");
 var getClientEnvironment = require("./env");
 
@@ -77,9 +78,8 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: [".js", ".json", ".jsx", ""],
     alias: {
-      // Support React Native Web
-      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      "react-native": "react-native-web"
+      app: path.resolve(__dirname, "../src"),
+      contracts: path.resolve(__dirname, "../build/contracts")
     }
   },
 
