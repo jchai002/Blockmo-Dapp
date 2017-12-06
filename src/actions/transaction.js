@@ -5,6 +5,7 @@ import store from "store";
 const contract = require("truffle-contract");
 
 export function sendTransaction({ address, amount, note }) {
+  console.log(store.getState());
   const sendtoken = contract(SendToken);
   return dispatch => {
     const sendtoken = contract(SendToken);

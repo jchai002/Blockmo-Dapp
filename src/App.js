@@ -8,7 +8,13 @@ import Header from "./components/Layout/Header";
 class App extends Component {
   componentDidMount() {
     this.props.initializeWeb3();
-    this.props.getAccount();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // only get account if not logged in
+    if (!nextProps.account.address && nextProps.web3) {
+      this.props.getAccount(nextProps.web3);
+    }
   }
 
   renderView() {
