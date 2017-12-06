@@ -2,7 +2,7 @@ pragma solidity ^0.4.2;
 
 import './zeppelin/lifecycle/Killable.sol';
 
-contract SendToken is Killable {
+contract Blockmo is Killable {
 
   struct Transaction {
     uint id;
@@ -13,6 +13,8 @@ contract SendToken is Killable {
   }
 
   // State variables
+
+  // this mapping provides a getter for the list of transactions
   mapping(uint => Transaction) public transactions;
   uint transactionCounter;
 
@@ -25,9 +27,9 @@ contract SendToken is Killable {
     string _note
   );
 
-  function sendTransaction(address _receiver, string _note ) payable public {
+  function sendTransaction(address _receiver, string _note) payable public {
     // don't allow the sender to send to self
-    require(_receiver != msg.sender);
+    //require(_receiver != msg.sender);
 
     // add new transaction
     transactionCounter++;
@@ -47,4 +49,15 @@ contract SendToken is Killable {
     // trigger the event
     sendTransactionEvent(transactionCounter, msg.sender, _receiver, msg.value, _note);
   }
+
+  function sendToken(address _receiver) payable public {
+    // the receiver gets some token
+    _receiver.transfer(msg.value);
+  }
+
+  // fetch the number of transactions in the contract
+  function getNumberOfTransactions() public constant returns (uint) {
+    return transactionCounter;
+  }
+
 }
