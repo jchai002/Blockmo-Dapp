@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { sendTransaction } from "app/actions/transaction";
+import { pay } from "app/actions/pay";
 
-class SendForm extends Component {
+class PayForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +30,7 @@ class SendForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.sendTransaction(this.state);
+    this.props.pay(this.state);
   }
 
   render() {
@@ -67,4 +67,4 @@ class SendForm extends Component {
     );
   }
 }
-export default connect(null, { sendTransaction })(SendForm);
+export default connect(null, { pay })(PayForm);

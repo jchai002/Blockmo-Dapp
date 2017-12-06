@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SendForm from "./SendForm";
+import PayForm from "./PayForm";
 
 class Home extends Component {
   onInputChange(event) {
@@ -10,7 +10,7 @@ class Home extends Component {
     return (
       <main className="container">
         <div className="row">
-          <SendForm />
+          <PayForm />
         </div>
       </main>
     );
