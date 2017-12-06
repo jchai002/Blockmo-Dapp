@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./assets/styles/app.scss";
-import { initializeWeb3 } from "actions/web3";
-import { getAccount } from "actions/account";
+import { initializeWeb3 } from "app/actions/web3";
+import { getAccount } from "app/actions/account";
 import Header from "./components/Layout/Header";
 
 class App extends Component {

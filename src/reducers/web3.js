@@ -1,4 +1,4 @@
-import { WEB3_INITIALIZED } from "actions/types";
+import { WEB3_INITIALIZED } from "app/actions/types";
 
 const web3Reducer = (
   state = {

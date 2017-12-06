@@ -6,7 +6,7 @@ import { syncHistoryWithStore } from "react-router-redux";
 
 // Layouts
 import App from "App";
-import Home from "components/HomeView";
+import Home from "app/components/HomeView";
 
 // Redux Store
 import store from "store";

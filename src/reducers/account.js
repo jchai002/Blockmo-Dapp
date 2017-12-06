@@ -1,4 +1,4 @@
-import { GET_ACCOUNT_SUCCESSS } from "actions/types";
+import { GET_ACCOUNT_SUCCESSS } from "app/actions/types";
 
 export default function(
   state = {

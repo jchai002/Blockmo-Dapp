@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { sendTransaction } from "actions/transaction";
+import { sendTransaction } from "app/actions/transaction";
 
 class SendForm extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAccount } from "actions/account";
+import { getAccount } from "app/actions/account";
 
 class Header extends Component {
   componentDidMount() {
