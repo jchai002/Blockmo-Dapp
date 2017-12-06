@@ -12,17 +12,9 @@ contract Blockmo is Killable {
     string note;
   }
 
-  struct Account {
-    uint id;
-    address account_address;
-  }
-
   // State variables
   mapping(uint => Transaction) public transactions;
   uint transactionCounter;
-
-  mapping(uint => Account) public accounts;
-  uint accountCounter;
 
   // Events
   event payEvent (
