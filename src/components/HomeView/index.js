@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getTransactions } from "app/actions/list";
 import PayForm from "./PayForm";
+import TransactionList from "./TransactionList";
 
 class Home extends Component {
-  onInputChange(event) {
-    this.setState({ name: event.target.value });
+  componentDidMount() {
+    this.props.getTransactions();
   }
   render() {
     return (
@@ -12,13 +14,17 @@ class Home extends Component {
         <div className="row">
           <PayForm />
         </div>
+        <div className="row">
+          <TransactionList />
+        </div>
       </main>
     );
   }
 }
 
-function mapStateToProps({ web3 }) {
-  return { web3: web3.web3Instance };
-}
-
-export default connect(mapStateToProps)(Home);
+export default connect(
+  ({ web3 }) => ({
+    web3: web3.web3Instance
+  }),
+  { getTransactions }
+)(Home);

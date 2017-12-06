@@ -1,9 +1,8 @@
-import { PAYMENT_SUCCESSS } from "app/actions/types";
 import BlockmoJSON from "contracts/Blockmo.json";
 import store from "store";
 const contract = require("truffle-contract");
 
-export function pay({ address, amount, note }) {
+export function getTransactions() {
   let web3 = store.getState().web3;
   // Double-check web3's status.
   if (typeof web3 !== "undefined") {
@@ -12,15 +11,13 @@ export function pay({ address, amount, note }) {
       BlockmoContract.setProvider(web3.currentProvider);
       BlockmoContract.deployed().then(function(instance) {
         instance
-          .pay("0xc2dbc0a6b68d6148d80273ce4d6667477dbf2aa7", "test note", {
-            from: web3.eth.coinbase,
-            value: web3.toWei(1, "ether"),
-            gas: 500000
-          })
-          .then(({ tx }) => {
-            if (tx) {
-              dispatch({ type: PAYMENT_SUCCESSS });
-            }
+          .getNumberOfTransactions()
+          .then(number => {
+            // var n = number.toNumber();
+            // console.log(instance);
+            instance.transactions(1).then(txs => {
+              console.log(txs);
+            });
           })
           .catch(err => {
             console.log(err);
