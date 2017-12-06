@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 class TransactionList extends Component {
   renderTransactions() {
     return this.props.list.transactions.map((tx, i) => {
-      console.log(tx);
       return (
         <li key={i}>
           <p>{`${tx[1]} transferred`}</p>

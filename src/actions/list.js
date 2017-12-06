@@ -1,28 +1,9 @@
 import { GET_TRANSACTIONS_SUCCESSS } from "app/actions/types";
 import BlockmoJSON from "contracts/Blockmo.json";
 import store from "store";
+import _ from "lodash";
 const contract = require("truffle-contract");
 
-async function fillHash(
-  contractInstance,
-  total,
-  currentIteration,
-  currentHash
-) {
-  if (total < currentIteration) {
-    return currentHash;
-  }
-  let tx = await contractInstance.transactions(currentIteration);
-  // modify tx BigNumbers
-  for (var i in tx) {
-    if (typeof tx[i] != "string") {
-      tx[i] = tx[i].toNumber();
-    }
-  }
-  currentHash[currentIteration] = tx;
-  currentIteration++;
-  return fillHash(contractInstance, total, currentIteration, currentHash);
-}
 export function getTransactions() {
   let web3 = store.getState().web3;
   // Double-check web3's status.
@@ -35,7 +16,7 @@ export function getTransactions() {
           .getNumberOfTransactions()
           .then(bigNum => {
             var txCount = bigNum.toNumber();
-            return fillHash(instance, txCount, 1, {});
+            return getOneTransaction(instance, txCount, {});
           })
           .then(hash => {
             var arr = [];
@@ -43,9 +24,10 @@ export function getTransactions() {
               hash[key][3] = web3.fromWei(hash[key][3], "ether");
               arr.push(hash[key]);
             }
+            // js object is always sorted ascending, need to reverse array
             dispatch({
               type: GET_TRANSACTIONS_SUCCESSS,
-              payload: { transactions: arr }
+              payload: { transactions: arr.reverse() }
             });
           })
           .catch(err => {
@@ -54,4 +36,19 @@ export function getTransactions() {
       });
     };
   }
+}
+
+// recursively get results in descending order by id
+async function getOneTransaction(contractInstance, total, currentHash) {
+  if (total == 0) {
+    return currentHash;
+  }
+  let tx = await contractInstance.transactions(total);
+  // modify tx BigNumbers
+  for (var i in tx) {
+    tx[i] = _.result(tx[i], "toNumber", tx[i]);
+  }
+  currentHash[total] = tx;
+  total--;
+  return getOneTransaction(contractInstance, total, currentHash);
 }
