@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { sendTransaction } from "actions/transaction";
 
 class SendForm extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class SendForm extends Component {
     this.onAddressChange = this.onAddressChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
     this.onNoteChange = this.onNoteChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onAddressChange(event) {
@@ -25,9 +28,9 @@ class SendForm extends Component {
     this.setState({ note: event.target.value });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.onSignUpFormSubmit(this.state.name);
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.sendTransaction(this.state);
   }
 
   render() {
@@ -64,5 +67,4 @@ class SendForm extends Component {
     );
   }
 }
-
-export default SendForm;
+export default connect(null, { sendTransaction })(SendForm);

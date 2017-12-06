@@ -18,7 +18,7 @@ class App extends Component {
           <p>{"No Web3 detected please download metamask"}</p>
         </div>
       );
-    } else if (!this.props.account) {
+    } else if (!this.props.account.address) {
       return (
         <div className="unauthenticated">
           <p>{"Please login with metamask"}</p>
