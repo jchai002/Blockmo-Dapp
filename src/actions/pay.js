@@ -20,10 +20,18 @@ export function pay({ address, amount, note }) {
           .then(data => {
             var { _amount, _note, _sender, _receiver } = data.logs[0].args;
             _amount = web3.fromWei(_amount, "ether").toNumber();
+
             if (data) {
               dispatch({
                 type: PAYMENT_SUCCESSS,
-                payload: [null, _sender, _receiver, _amount, _note]
+                payload: [
+                  null,
+                  _sender,
+                  _receiver,
+                  _amount,
+                  _note,
+                  new Date().getTime() / 1000
+                ]
               });
             }
           })
