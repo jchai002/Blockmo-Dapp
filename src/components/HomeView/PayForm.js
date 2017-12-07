@@ -46,7 +46,7 @@ class PayForm extends Component {
               value={this.state.address}
             />
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder="Amount"
               onChange={this.onAmountChange}
