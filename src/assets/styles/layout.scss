@@ -40,6 +40,14 @@ p {
 .external-link {
   color: $orange;
 }
+
+.status {
+  color: $gray2;
+  img {
+    height: 32px;
+    margin-right: $space-sm;
+  }
+}
 // PayForm
 .pay-form {
   margin-bottom: $space-lg;
@@ -60,10 +68,13 @@ p {
     -webkit-appearance: none;
     margin: 0;
   }
-  .row-1 {
+  .row-space-between {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+  }
+  .row-80-20 {
+    flex-direction: column;
     input {
       width: 100%;
     }
@@ -84,6 +95,7 @@ p {
     color: $white;
     transition: 400ms;
     margin: 0;
+    width: 2*$space-xl;
     &:hover {
       transition: 400ms;
       background-color: darken($blue, 20%);

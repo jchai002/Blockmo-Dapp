@@ -11,6 +11,7 @@ export function pay({ address, amount, note }) {
       const BlockmoContract = contract(BlockmoJSON);
       BlockmoContract.setProvider(web3.currentProvider);
       BlockmoContract.deployed().then(function(instance) {
+        console.log("mining...");
         instance
           .pay(address, note, {
             from: web3.eth.coinbase,
@@ -18,6 +19,7 @@ export function pay({ address, amount, note }) {
             gas: 500000
           })
           .then(data => {
+            console.log("mined...", data);
             var { _amount, _note, _sender, _receiver } = data.logs[0].args;
             _amount = web3.fromWei(_amount, "ether").toNumber();
             if (data) {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { pay } from "app/actions/pay";
+import ethereumLogo from "app/assets/images/eth.png";
 
 class PayForm extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class PayForm extends Component {
     return (
       <div className="col-xs-12 col-md-8 offset-md-2">
         <form className="pay-form" onSubmit={this.handleSubmit}>
-          <div className="row-1">
+          <div className="row-space-between row-80-20">
             <input
               type="text"
               className="form-control"
@@ -60,7 +61,13 @@ class PayForm extends Component {
             onChange={this.onNoteChange}
             value={this.state.note}
           />
-          <input type="submit" className="form-control submit" />
+          <div className="row-space-between">
+            <input type="submit" className="form-control submit" />
+            <div className="status">
+              <img className="animated infinite pulse" src={ethereumLogo} />
+              Waiting for next block...
+            </div>
+          </div>
         </form>
       </div>
     );
