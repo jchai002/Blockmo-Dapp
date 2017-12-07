@@ -8,7 +8,7 @@ class Header extends Component {
       <header>
         <div className="nav-desktop">
           <div className="logo">
-            <span>Blockmo</span>
+            <h1>Blockmo</h1>
           </div>
           <div className="account">
             <p>

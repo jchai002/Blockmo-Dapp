@@ -3,11 +3,19 @@ header {
   .nav-desktop {
     width: 100%;
     color: $blue;
-    height: $space-xl;
+    height: 72px;
     padding: 0 $space-lg;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      > div {
+        margin: $space-xs 0;
+      }
+    }
     > div span {
       margin-right: $space-xs;
     }
