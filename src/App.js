@@ -21,13 +21,25 @@ class App extends Component {
     if (!this.props.web3) {
       return (
         <div className="unauthenticated">
-          <p>{"No Web3 detected please download metamask"}</p>
+          <p>
+            This Dapp requires the{" "}
+            <a className="external-link" href="https://metamask.io/">
+              MetaMask
+            </a>{" "}
+            Chrome extension. You can{" "}
+            <a
+              href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"
+              className="external-link"
+            >
+              download it here
+            </a>.
+          </p>
         </div>
       );
     } else if (!this.props.account.address) {
       return (
         <div className="unauthenticated">
-          <p>{"Please login with metamask"}</p>
+          <p>Please login with MetaMask</p>
         </div>
       );
     } else {
@@ -38,7 +50,7 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        {this.renderView()}
+        <main className="container">{this.renderView()}</main>
       </div>
     );
   }

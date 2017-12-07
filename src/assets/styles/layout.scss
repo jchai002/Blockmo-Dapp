@@ -27,17 +27,22 @@ body {
   font-weight: $normal;
 }
 
+main {
+  margin: $space-lg 0;
+}
+
 p {
   margin: 0;
 }
 
 .amount,
-.address {
+.address,
+.external-link {
   color: $orange;
 }
 // PayForm
 .pay-form {
-  margin: $space-lg 0;
+  margin-bottom: $space-lg;
   padding: $space-md;
   border: 1px solid $gray1;
   border-radius: 4px;

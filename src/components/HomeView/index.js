@@ -10,14 +10,10 @@ class Home extends Component {
   }
   render() {
     return (
-      <main className="container">
-        <div className="row">
-          <PayForm />
-        </div>
-        <div className="row">
-          <TransactionList />
-        </div>
-      </main>
+      <div className="row">
+        <PayForm />
+        <TransactionList />
+      </div>
     );
   }
 }
