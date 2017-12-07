@@ -58,9 +58,8 @@ class PayForm extends Component {
             className="form-control"
             placeholder="Note"
             onChange={this.onNoteChange}
-          >
-            {this.state.note}
-          </textarea>
+            value={this.state.note}
+          />
           <input type="submit" className="form-control submit" />
         </form>
       </div>

@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+const moment = require("moment");
 
 class TransactionList extends Component {
   renderTransactions() {
     return this.props.transactions.map((tx, i) => {
+      let date = new Date(tx[5] * 1000);
       return (
         <li key={i}>
-          <p>{`${tx[1].substr(-6)} paid ${tx[2].substr(-6)} ${tx[3]} ETH`}</p>
+          <p>
+            <span>{`${tx[1].substr(-6)} paid ${tx[2].substr(-6)} ${
+              tx[3]
+            } ETH`}</span>
+            <span className="timestamp">{moment(date).fromNow()}</span>
+          </p>
           <p>{`${tx[4]}`}</p>
         </li>
       );

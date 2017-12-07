@@ -71,8 +71,18 @@ p {
   border: 1px solid $gray1;
   border-radius: 4px;
   > li {
-    border-bottom: 1px solid $gray1;
+    &:not(:last-of-type) {
+      border-bottom: 1px solid $gray1;
+    }
     padding: $space-sm 0;
+    p:first-child {
+      display: flex;
+      justify-content: space-between;
+      .timestamp {
+        color: $gray2;
+        font-weight: $light;
+      }
+    }
     p:last-child {
       margin: $space-sm 0;
       font-weight: $light;
