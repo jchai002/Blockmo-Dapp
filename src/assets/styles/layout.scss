@@ -16,6 +16,7 @@ header {
 
 body {
   font-family: "Oswald";
+  font-weight: $normal;
 }
 
 p {
@@ -25,6 +26,9 @@ p {
 // PayForm
 .pay-form {
   margin: $space-lg 0;
+  padding: $space-md;
+  border: 1px solid $gray1;
+  border-radius: 4px;
   input,
   textarea {
     margin-bottom: $space-md;
@@ -52,9 +56,26 @@ p {
     background-color: $blue;
     color: $white;
     transition: 400ms;
+    margin: 0;
     &:hover {
       transition: 400ms;
       background-color: darken($blue, 20%);
+    }
+  }
+}
+
+// TransactionList
+.transaction-list {
+  @include list-no-style;
+  padding: $space-md;
+  border: 1px solid $gray1;
+  border-radius: 4px;
+  > li {
+    border-bottom: 1px solid $gray1;
+    padding: $space-sm 0;
+    p:last-child {
+      margin: $space-sm 0;
+      font-weight: $light;
     }
   }
 }
