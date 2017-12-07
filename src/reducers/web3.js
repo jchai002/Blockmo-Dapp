@@ -7,7 +7,7 @@ const web3Reducer = (
   action
 ) => {
   if (action.type === WEB3_INITIALIZED) {
-    return action.payload;
+    return action.payload || null;
   }
 
   return state;
