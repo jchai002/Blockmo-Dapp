@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'capistrano'
+gem 'capistrano', '~>3.10.0'
 gem 'capistrano-npm'
