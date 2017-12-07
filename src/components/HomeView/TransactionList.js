@@ -9,9 +9,10 @@ class TransactionList extends Component {
       return (
         <li key={i}>
           <p>
-            <span>{`${tx[1].substr(-6)} paid ${tx[2].substr(-6)} ${
-              tx[3]
-            } ETH`}</span>
+            <span>
+              {`${tx[1].substr(-6)} paid ${tx[2].substr(-6)}`}{" "}
+              <b className="amount">{`${tx[3]} ETH`}</b>
+            </span>
             <span className="timestamp">{moment(date).fromNow()}</span>
           </p>
           <p>{`${tx[4]}`}</p>

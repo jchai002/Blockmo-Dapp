@@ -13,13 +13,13 @@ class Header extends Component {
           <div className="account">
             <p>
               <span>Address:</span>
-              <span>{this.props.account.address}</span>
+              <span className="address">{this.props.account.address}</span>
             </p>
           </div>
           <div className="balance">
             <p>
               <span>Balance:</span>
-              <span>{this.props.account.balance}</span>
+              <span className="amount">{this.props.account.balance} ETH</span>
             </p>
           </div>
         </div>
