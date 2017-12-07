@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./assets/styles/app.scss";
+import "app/assets/styles/app.scss";
 import { initializeWeb3 } from "app/actions/web3";
 import { getAccount } from "app/actions/account";
-import Header from "./components/Layout/Header";
+import Header from "app/components/Layout/Header";
 
 class App extends Component {
   componentDidMount() {
@@ -39,7 +39,12 @@ class App extends Component {
     } else if (!this.props.account.address) {
       return (
         <div className="unauthenticated">
-          <p>Please login with MetaMask</p>
+          <p>
+            Please login with{" "}
+            <a className="external-link" href="https://metamask.io/">
+              MetaMask
+            </a>
+          </p>
         </div>
       );
     } else {
