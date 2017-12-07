@@ -63,8 +63,11 @@ class PayForm extends Component {
           />
           <div className="row-space-between">
             <input type="submit" className="form-control submit" />
-            <div className="status">
-              <img className="animated infinite pulse" src={ethereumLogo} />
+            <div
+              className={`status animated infinite pulse ${!this.props.status
+                .mining && "hidden"}`}
+            >
+              <img src={ethereumLogo} />
               Waiting for next block...
             </div>
           </div>
@@ -73,4 +76,4 @@ class PayForm extends Component {
     );
   }
 }
-export default connect(null, { pay })(PayForm);
+export default connect(({ status }) => ({ status }), { pay })(PayForm);

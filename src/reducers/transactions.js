@@ -1,5 +1,4 @@
-import { GET_TRANSACTIONS_SUCCESSS } from "app/actions/types";
-import { PAYMENT_SUCCESSS } from "app/actions/types";
+import { GET_TRANSACTIONS_SUCCESSS, PAYMENT_SUCCESSS } from "app/actions/types";
 
 export default function(state = [], action) {
   if (action.type === GET_TRANSACTIONS_SUCCESSS) {
