@@ -26,10 +26,11 @@ class App extends Component {
     }
 
     // if connected to web3, add transaction listener
-    if (nextProps.web3 && !this.state.listeningToTransactions) {
-      listenToTransactions();
-      this.setState({ listeningToTransactions: true });
-    }
+    // depends on metamask events, which is currently not working
+    // if (nextProps.web3 && !this.state.listeningToTransactions) {
+    //   listenToTransactions();
+    //   this.setState({ listeningToTransactions: true });
+    // }
   }
 
   renderView() {

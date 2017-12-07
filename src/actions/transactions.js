@@ -27,7 +27,7 @@ export function getTransactions() {
             // js object is always sorted ascending, need to reverse array
             dispatch({
               type: GET_TRANSACTIONS_SUCCESSS,
-              payload: { transactions: arr.reverse() }
+              payload: arr.reverse()
             });
           })
           .catch(err => {

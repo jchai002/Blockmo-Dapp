@@ -4,7 +4,6 @@ const contract = require("truffle-contract");
 
 export function listenToTransactions() {
   let web3 = store.getState().web3;
-  console.log(web3);
   const BlockmoContract = contract(BlockmoJSON);
   BlockmoContract.setProvider(web3.currentProvider);
   BlockmoContract.deployed().then(instance => {
@@ -14,7 +13,7 @@ export function listenToTransactions() {
         {},
         {
           fromBlock: 0,
-          toBlock: "latest"
+          toBlock: "pending"
         }
       )
       .watch((err, event) => {

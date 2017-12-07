@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getTransactions } from "app/actions/list";
+import { getTransactions } from "app/actions/transactions";
 import PayForm from "./PayForm";
 import TransactionList from "./TransactionList";
 

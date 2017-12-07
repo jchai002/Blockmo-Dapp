@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 
 class TransactionList extends Component {
   renderTransactions() {
-    return this.props.list.transactions.map((tx, i) => {
+    return this.props.transactions.map((tx, i) => {
       return (
         <li key={i}>
-          <p>{`${tx[1].substr(-6)} transferred ${tx[3]} ETH to ${tx[2].substr(-6)}`}</p>
+          <p>{`${tx[1].substr(-6)} transferred ${tx[3]} ETH to ${tx[2].substr(
+            -6
+          )}`}</p>
           <p>{`because ${tx[4]}`}</p>
         </li>
       );
@@ -20,4 +22,6 @@ class TransactionList extends Component {
     );
   }
 }
-export default connect(({ list }) => ({ list }), null)(TransactionList);
+export default connect(({ transactions }) => ({ transactions }), null)(
+  TransactionList
+);

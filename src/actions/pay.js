@@ -17,9 +17,14 @@ export function pay({ address, amount, note }) {
             value: web3.toWei(amount, "ether"),
             gas: 500000
           })
-          .then(({ tx }) => {
-            if (tx) {
-              dispatch({ type: PAYMENT_SUCCESSS });
+          .then(data => {
+            var { _amount, _note, _sender, _receiver } = data.logs[0].args;
+            _amount = web3.fromWei(_amount, "ether").toNumber();
+            if (data) {
+              dispatch({
+                type: PAYMENT_SUCCESSS,
+                payload: [null, _sender, _receiver, _amount, _note]
+              });
             }
           })
           .catch(err => {
