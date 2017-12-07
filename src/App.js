@@ -3,18 +3,9 @@ import { connect } from "react-redux";
 import "./assets/styles/app.scss";
 import { initializeWeb3 } from "app/actions/web3";
 import { getAccount } from "app/actions/account";
-import { listenToTransactions } from "app/util/listeners";
 import Header from "./components/Layout/Header";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listeningToTransactions: false
-    };
-    this.renderView = this.renderView.bind(this);
-  }
-
   componentDidMount() {
     this.props.initializeWeb3();
   }
@@ -24,13 +15,6 @@ class App extends Component {
     if (!nextProps.account.address && nextProps.web3) {
       this.props.getAccount(nextProps.web3);
     }
-
-    // if connected to web3, add transaction listener
-    // depends on metamask events, which is currently not working
-    // if (nextProps.web3 && !this.state.listeningToTransactions) {
-    //   listenToTransactions();
-    //   this.setState({ listeningToTransactions: true });
-    // }
   }
 
   renderView() {

@@ -16,7 +16,7 @@ class TransactionList extends Component {
   }
   render() {
     return (
-      <ul className="col-xs-12 col-md-8 col-md-offset-2">
+      <ul className="col-xs-12 col-md-8 offset-md-2">
         {this.renderTransactions()}
       </ul>
     );

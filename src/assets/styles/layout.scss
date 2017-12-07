@@ -21,3 +21,40 @@ body {
 p {
   margin: 0;
 }
+
+// PayForm
+.pay-form {
+  margin: $space-lg 0;
+  input,
+  textarea {
+    margin-bottom: $space-md;
+  }
+  .row-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    input {
+      width: 100%;
+    }
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      input:first-child {
+        width: 80%;
+      }
+      input:last-child {
+        width: calc(20% - 16px);
+      }
+    }
+  }
+  .submit {
+    cursor: pointer;
+    border: none;
+    background-color: $blue;
+    color: $white;
+    transition: 400ms;
+    &:hover {
+      transition: 400ms;
+      background-color: darken($blue, 20%);
+    }
+  }
+}

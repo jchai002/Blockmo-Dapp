@@ -35,35 +35,38 @@ class PayForm extends Component {
 
   render() {
     return (
-      <form
-        className="col-xs-12 col-md-8 col-md-offset-2"
-        onSubmit={this.handleSubmit}
-      >
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Address"
-            onChange={this.onAddressChange}
-            value={this.state.address}
-          />
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Amount"
-            onChange={this.onAmountChange}
-            value={this.state.amount}
-          />
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Note"
-            value={this.state.note}
-            onChange={this.onNoteChange}
-          />
-          <input type="submit" className="form-control" />
-        </div>
-      </form>
+      <div className="col-xs-12 col-md-8 offset-md-2">
+        <form className="pay-form" onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <div className="row-1">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Address"
+                onChange={this.onAddressChange}
+                value={this.state.address}
+              />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Amount"
+                onChange={this.onAmountChange}
+                value={this.state.amount}
+              />
+            </div>
+            <textarea
+              type="text"
+              className="form-control"
+              placeholder="Note"
+              onChange={this.onNoteChange}
+            >
+              {this.state.note}
+            </textarea>
+
+            <input type="submit" className="form-control submit" />
+          </div>
+        </form>
+      </div>
     );
   }
 }
