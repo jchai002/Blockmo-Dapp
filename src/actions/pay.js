@@ -12,7 +12,7 @@ export function pay({ address, amount, note }) {
       BlockmoContract.setProvider(web3.currentProvider);
       BlockmoContract.deployed().then(function(instance) {
         instance
-          .pay("0xc2dbc0a6b68d6148d80273ce4d6667477dbf2aa7", note, {
+          .pay(address, note, {
             from: web3.eth.coinbase,
             value: web3.toWei(amount, "ether"),
             gas: 500000
