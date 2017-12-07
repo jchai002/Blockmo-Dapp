@@ -10,6 +10,7 @@ contract Blockmo is Killable {
     address receiver;
     uint256 amount;
     string note;
+    uint256 time;
   }
 
   // State variables
@@ -37,7 +38,8 @@ contract Blockmo is Killable {
          msg.sender,
          _receiver,
          msg.value,
-         _note
+         _note,
+         now
     );
 
     // the receiver gets some token
