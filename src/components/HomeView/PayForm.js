@@ -68,7 +68,7 @@ class PayForm extends Component {
                 .mining && "hidden"}`}
             >
               <img src={ethereumLogo} />
-              Waiting for next block...
+              Waiting for blocks...
             </div>
           </div>
         </form>

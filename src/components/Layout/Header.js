@@ -19,7 +19,9 @@ class Header extends Component {
           <div className="balance">
             <p>
               <span>Balance:</span>
-              <span className="amount">{this.props.account.balance} ETH</span>
+              <span className="amount">
+                {this.props.account.balance || 0} ETH
+              </span>
             </p>
           </div>
         </div>
