@@ -64,6 +64,9 @@ p {
   input,
   textarea {
     margin-bottom: $space-md;
+    &.error {
+      border: 1px solid $red;
+    }
   }
   /* For Firefox */
   input[type="number"] {

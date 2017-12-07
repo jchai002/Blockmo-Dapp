@@ -9,7 +9,8 @@ class PayForm extends Component {
     this.state = {
       address: "",
       amount: "",
-      note: ""
+      note: "",
+      addressValid: true
     };
     this.onAddressChange = this.onAddressChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
@@ -31,6 +32,12 @@ class PayForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (!/^(0x)?[0-9a-f]{40}$/i.test(this.state.address)) {
+      this.setState({ addressValid: false });
+      return false;
+    } else {
+      this.setState({ addressValid: true });
+    }
     this.props.pay(this.state);
   }
 
@@ -41,7 +48,9 @@ class PayForm extends Component {
           <div className="row-space-between row-80-20">
             <input
               type="text"
-              className="form-control"
+              className={`form-control ${
+                !this.state.addressValid ? "error" : ""
+              }`}
               placeholder="Address"
               onChange={this.onAddressChange}
               value={this.state.address}
