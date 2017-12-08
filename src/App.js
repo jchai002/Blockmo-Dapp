@@ -4,6 +4,7 @@ import "app/assets/styles/app.scss";
 import { initializeWeb3 } from "app/actions/web3";
 import { getAccount } from "app/actions/account";
 import Header from "app/components/Layout/Header";
+import { pollForAccountChange } from "app/util/listeners";
 
 class App extends Component {
   componentDidMount() {
@@ -14,6 +15,10 @@ class App extends Component {
     // only get account if not logged in
     if (!nextProps.account.address && nextProps.web3) {
       this.props.getAccount(nextProps.web3);
+    }
+    if (nextProps.account.address) {
+      // attach a listener here to check for metamask account change
+      return pollForAccountChange();
     }
   }
 
