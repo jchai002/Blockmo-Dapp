@@ -10,7 +10,8 @@ class PayForm extends Component {
       address: "",
       amount: "",
       note: "",
-      addressValid: true
+      addressValid: true,
+      amountValid: true
     };
     this.onAddressChange = this.onAddressChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
@@ -32,11 +33,19 @@ class PayForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // validate address format
     if (!/^(0x)?[0-9a-f]{40}$/i.test(this.state.address)) {
       this.setState({ addressValid: false });
       return false;
     } else {
       this.setState({ addressValid: true });
+    }
+    // validate amount is not 0 or less
+    if (0 >= this.state.amount) {
+      this.setState({ amountValid: false });
+      return false;
+    } else {
+      this.setState({ amountValid: true });
     }
     this.props.pay(this.state);
   }
@@ -57,7 +66,9 @@ class PayForm extends Component {
             />
             <input
               type="number"
-              className="form-control"
+              className={`form-control ${
+                !this.state.amountValid ? "error" : ""
+              }`}
               placeholder="Amount"
               onChange={this.onAmountChange}
               value={this.state.amount}
