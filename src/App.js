@@ -6,7 +6,17 @@ import { getAccount } from "app/actions/account";
 import Header from "app/components/Layout/Header";
 import { pollForAccountChange } from "app/util/listeners";
 
-class App extends Component {
+@connect(
+  ({ web3, account }) => ({
+    web3,
+    account
+  }),
+  {
+    initializeWeb3,
+    getAccount
+  }
+)
+export default class App extends Component {
   componentDidMount() {
     this.props.initializeWeb3();
   }
@@ -65,13 +75,3 @@ class App extends Component {
     );
   }
 }
-export default connect(
-  ({ web3, account }) => ({
-    web3,
-    account
-  }),
-  {
-    initializeWeb3,
-    getAccount
-  }
-)(App);

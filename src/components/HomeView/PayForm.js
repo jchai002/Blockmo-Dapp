@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { pay } from "app/actions/pay";
 import ethereumLogo from "app/assets/images/eth.png";
 
-class PayForm extends Component {
+@connect(({ status }) => ({ status }), { pay })
+export default class PayForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -96,4 +97,3 @@ class PayForm extends Component {
     );
   }
 }
-export default connect(({ status }) => ({ status }), { pay })(PayForm);

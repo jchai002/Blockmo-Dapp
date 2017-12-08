@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 const moment = require("moment");
 
-class TransactionList extends Component {
+@connect(({ transactions }) => ({ transactions }), null)
+export default class TransactionList extends Component {
   renderTransactions() {
     return this.props.transactions.map((tx, i) => {
       let date = new Date(tx[5] * 1000);
@@ -28,6 +29,3 @@ class TransactionList extends Component {
     );
   }
 }
-export default connect(({ transactions }) => ({ transactions }), null)(
-  TransactionList
-);

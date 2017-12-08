@@ -4,7 +4,13 @@ import { getTransactions } from "app/actions/transactions";
 import PayForm from "./PayForm";
 import TransactionList from "./TransactionList";
 
-class Home extends Component {
+@connect(
+  ({ web3 }) => ({
+    web3: web3.web3Instance
+  }),
+  { getTransactions }
+)
+export default class Home extends Component {
   componentDidMount() {
     this.props.getTransactions();
   }
@@ -17,10 +23,3 @@ class Home extends Component {
     );
   }
 }
-
-export default connect(
-  ({ web3 }) => ({
-    web3: web3.web3Instance
-  }),
-  { getTransactions }
-)(Home);
