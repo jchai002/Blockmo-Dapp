@@ -16,6 +16,9 @@ export function getTransactions() {
           .getNumberOfTransactions()
           .then(bigNum => {
             var txCount = bigNum.toNumber();
+            // limit to 6 transactions
+            // TODO: add pagination
+            txCount = txCount > 6 ? 6 : txCount;
             return getContractTransactions(instance, txCount, {});
           })
           .then(hash => {
