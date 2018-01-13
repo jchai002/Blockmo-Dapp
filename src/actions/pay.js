@@ -21,7 +21,9 @@ export function pay({ address, amount, note }) {
           .then(data => {
             if (data) {
               var { _amount, _note, _sender, _receiver } = data.logs[0].args;
-              _amount = web3.fromWei(_amount, "ether").toNumber();
+              if (_amount) {
+                _amount = web3.fromWei(_amount, "ether").toNumber();
+              }
               dispatch({
                 type: PAYMENT_SUCCESSS,
                 payload: [
